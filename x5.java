@@ -1,3 +1,8 @@
+String title= "Elastic Collisions";
+String news= "Use 'r' key to reset.";
+String author= "Tara";
+
+
 float left,right,top,bottom;
 float middle;
 
@@ -13,17 +18,17 @@ void setup(){
   right= width-25;
   top= 100;
   bottom= height-25;
-  middle=left +( right-left)/2;
+  middle=left +( right-left)/4;
   //
   reset();
 }
 void reset(){
-    cueX= left + (right-left) / 2;
-    cueY= top + (bottom-top) /3;
+    cueX= left + (right-left) / 4;
+    cueY= top + (bottom-top) /1;
     //Random Positions.
     redX= random (middle,right); redY= random(top,bottom);
     yelX=  random (middle,right); yelY= random(bottom,middle);
-    bluX= random (left,middle); bluY= random(top,bottom);
+    bluX= random (middle, right); bluY= random(top, middle);
     //Random speeds
     redDX= random (2,6); redDY= random (2,6);
     yelDX= random (2,6); yelDY= random (2,6);
@@ -41,11 +46,11 @@ void reset(){
   }
   void table(float left,float top,float right,float bottom){
    fill(100,250,100);      
-   strokeweight (20); 
+   strokeWeight (20); 
    stroke(127,0,0);
-   rect (left-25,top-25,right+25,botton+20);
+   rect (left-20,top-20,right+20,bottom+20);
    stroke(0);
-   strokeweight(1);
+   strokeWeight(1);
   }
   void bounce(){
   redX += redDX;  if ( redX<left || redX>right ) redDX *= -1;
@@ -70,4 +75,8 @@ void messages() {
   text( news, width/3, 40 );
   text( author, 10, height-10 );
 }
-
+void keyPresse(){
+  if(key=='r'){
+    reset();
+  }
+}
